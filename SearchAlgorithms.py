@@ -1,5 +1,5 @@
 import GridMoves
-import GridDiagramClean
+import GridDiagram
 import pickle
 import time
 
@@ -107,8 +107,8 @@ def bidirectional_search_find_destabilizable(grids,depth):
                         print(f"Destabilizable: {grids_list[i]} via {grids_list[j]}")
                 elif grids_list[j] not in isotopy_equiv_grids:
                     isotopy_equiv_grids.add(grids_list[j])
-                    G1 = GridDiagramClean.GridDiagram(grids_list[i][0],grids_list[i][1])
-                    G2 = GridDiagramClean.GridDiagram(grids_list[j][0],grids_list[j][1])
+                    G1 = GridDiagram.GridDiagram(grids_list[i][0],grids_list[i][1])
+                    G2 = GridDiagram.GridDiagram(grids_list[j][0],grids_list[j][1])
                     if LOUD_MODE:
                         print(f"Isotopy: {grids_list[i]} --> {grids_list[j]}, with ({G1.tb},{G1.r}) --> ({G2.tb},{G2.r})")
 
@@ -142,8 +142,8 @@ def bidirectional_search(grids,depth):
                 pass
             elif len(grids_dict[grids_list[i]].intersection(grids_dict[grids_list[j]]))!=0:
                 isotopy_equiv_grids.add(grids_list[j])
-                G1 = GridDiagramClean.GridDiagram(grids_list[i][0],grids_list[i][1])
-                G2 = GridDiagramClean.GridDiagram(grids_list[j][0],grids_list[j][1])
+                G1 = GridDiagram.GridDiagram(grids_list[i][0],grids_list[i][1])
+                G2 = GridDiagram.GridDiagram(grids_list[j][0],grids_list[j][1])
                 if LOUD_MODE:
                     print(f"Isotopy: {grids_list[i]} --> {grids_list[j]}, with ({G1.tb},{G1.r}) --> ({G2.tb},{G2.r})")
     
@@ -178,8 +178,8 @@ def bidirectional_search_with_stabilization(grids,depth):
                 pass
             elif len(grids_dict[grids_list[i]].intersection(grids_dict[grids_list[j]]))!=0:
                 isotopy_equiv_grids.add(grids_list[j])
-                G1 = GridDiagramClean.GridDiagram(grids_list[i][0],grids_list[i][1])
-                G2 = GridDiagramClean.GridDiagram(grids_list[j][0],grids_list[j][1])
+                G1 = GridDiagram.GridDiagram(grids_list[i][0],grids_list[i][1])
+                G2 = GridDiagram.GridDiagram(grids_list[j][0],grids_list[j][1])
                 if LOUD_MODE:
                     print(f"Isotopy: {grids_list[i]} --> {grids_list[j]}, with ({G1.tb},{G1.r}) --> ({G2.tb},{G2.r})")
 
