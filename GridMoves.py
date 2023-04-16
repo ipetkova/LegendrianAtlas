@@ -424,7 +424,7 @@ def death(grid):
 
 
 # NEED A BETTER HOME FOR THIS CODE
-### Maybe in GridDiagramClean.py from here till line 541. Also rename GridDiagramClean.py to GridDiagram.py and edit code in other files accordingly.  
+### Maybe in GridDiagram.py from here till line 541. Also, Ina renamed GridDiagramClean.py to GridDiagram.py. Check if we've edited code in other files accordingly.  
 def trace(X,O):
     dir = 'UP'
     loc = [0,1]
