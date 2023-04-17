@@ -206,6 +206,30 @@ def find_destabilizable_only(grids,depth):
         print(f"Destab number: {len(destabilizable_grids)}")
     return destabilizable_grids
 
+
+def bidirectional_search_with_stabilization_twice(grids,depth):
+    grids_dict = dict()
+    for grid in grids:
+        grids_dict[grid]=set()
+        temp = set()
+        for stabilized_grid in GridMoves.generate_stabilized_grids(grid):
+            for stabilized_grid_2 in GridMoves.generate_stabilized_grids(stabilized_grid):
+                temp.add(stabilized_grid_2)
+        grids_dict[grid]=find_equiv_grids(temp,depth)
+    grids_list = list(grids)
+    grids_list.sort(key=lambda grid:len(grids_dict[grid]))
+    
+    isotopy_equiv_grids = set()
+    for i in range(len(grids_list)-1):
+        for j in range(i+1,len(grids_list)):
+            if j in isotopy_equiv_grids:
+                pass
+            elif len(grids_dict[grids_list[i]].intersection(grids_dict[grids_list[j]]))!=0:
+                isotopy_equiv_grids.add(grids_list[j])
+
+    del grids_dict, grids_list
+    return isotopy_equiv_grids
+
 if __name__=='__main__':
 
     X=(0,1,2,6,4,5,3)
