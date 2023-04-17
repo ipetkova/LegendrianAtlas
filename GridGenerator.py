@@ -40,7 +40,7 @@ def generate_valid_x_perms(n):
     for x_perm in valid_x_perms.copy():
         if x_perm in valid_x_perms:
             for j in range(1,n):
-                y = tuple([(x_perm[(i+j)%n]-x_perm[j])%n for i in range(10)])
+                y = tuple([(x_perm[(i+j)%n]-x_perm[j])%n for i in range(n)])
                 if y in valid_x_perms and y!=x_perm:
                     valid_x_perms.remove(y)
     return valid_x_perms
@@ -62,7 +62,7 @@ def generate_valid_o_perms(x_perm):
             for col in range(len(blocked_matrix[row])):
                 if blocked_matrix[row][col]:
                     constraint_matrix.append([0]*(1+2*len(blocked_matrix)))
-                    constraint_matrix[-1][0] = 10*row + col
+                    constraint_matrix[-1][0] = n*row + col
                     constraint_matrix[-1][1+row] = 1
                     constraint_matrix[-1][1+len(blocked_matrix)+col] = 1
         return constraint_matrix
@@ -88,7 +88,7 @@ def generate_valid_o_perms(x_perm):
     def to_permutation(O_set):
         O_perm = [0]*n
         for grid_square in O_set:
-            O_perm[grid_square%10] = grid_square//10
+            O_perm[grid_square%n] = grid_square//n
         return tuple(O_perm)
     
     # Actually executes what we want
