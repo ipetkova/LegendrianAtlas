@@ -32,9 +32,7 @@ if __name__ == '__main__':
             case "CS":
                 reduced_grids = grids - SearchAlgorithms.bidirectional_search_with_stabilization(grids, depth)
             case "D":
-                reduced_grids = grids - SearchAlgorithms.bidirectional_search_find_destabilizable_only(grids, depth)
-            case "DL":
-                reduced_grids = grids - SearchAlgorithms.find_legendrian_destabilizable_only(grids)
+                reduced_grids = grids - SearchAlgorithms.find_destabilizable_only(grids, depth)
             case "CSS":
                 reduced_grids = grids - SearchAlgorithms.bidirectional_search_with_stabilization_twice(grids, depth)
         if len(reduced_grids)!=0:
