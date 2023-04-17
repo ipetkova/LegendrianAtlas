@@ -6,7 +6,6 @@ from itertools import permutations
 import pickle
 import time
 #import snappy
-### Ina removed the above snappy line, as snappy wasn't in her library. Uncomment above, and delete this.
 
 
 def generate_cyclic_equivalent_grids(grid):
