@@ -30,8 +30,8 @@ def find_equiv_grids(grid,depth):
 
 # Input: a set S of grids and a depth d
 # Output: a subset T of S that contains grids which are either 
-        # a) detabilizable, or
-        # b) are asotopic to a grid in S - T
+        # a) destabilizable, or
+        # b) are isotopic to a grid in S - T
         
 # Looks for destabilizable grids (grids with a length-one segment) 
 # by generating an equivalence neighborhood of given depth for each grid,
@@ -75,28 +75,15 @@ def bidirectional_search_find_destabilizable(grids,depth):
     # If one was already in destabilizable list and the other not, add the other too
     # If neither was in destabilizable list, add Gj to isotopy_equiv_grids
     
-    # We return the set T of grids found to be either detabilizable or to have
+    # We return the set T of grids found to be either destabilizable or to have
     # an isotopy class representative remaining in the original set of grids minus T.
     
     isotopy_equiv_grids = set()
     for i in range(len(grids_list)-1):
         for j in range(i+1,len(grids_list)):
-            if len(grids_dict[grids_list[i]].intersection(grids_dict[grids_list[j]])) != 0:
-                
-                
-                ###
-                ### FOR NOAH, PLEASE ADDRESS AND DELETE:
-                ###
-        
-                # is it faster to check (a) if an element is in a small set, or (b) two larger sets overlap?
-                # I think (a), so I'd move the if below to right above the above line. 
-                # This way we only check for isotopic grids if both are not already destabilizable.
-                # I know once we ge to here, everything is quick, I wonder what the time difference is for like 1 mil grids.
-                # based on what I ran, this does seem to matter a lot:
-                # 23k grids about 1-2 hrs, 60k grids about 10 hrs, 100k grids over 20 hrs. 
-                
-                if grids_list[i] in destabilizable_grids and grids_list[j] in destabilizable_grids:
-                    pass
+            if grids_list[i] in destabilizable_grids and grids_list[j] in destabilizable_grids:
+                pass
+            elif len(grids_dict[grids_list[i]].intersection(grids_dict[grids_list[j]])) != 0:
                 if grids_list[i] in destabilizable_grids and grids_list[j] not in destabilizable_grids:
                     destabilizable_grids.add(grids_list[i])
                     if LOUD_MODE:
@@ -195,7 +182,7 @@ def bidirectional_search_with_stabilization(grids,depth):
 # This captures grids that need up to depth-many moves to get to a form with a short segment.
 # Linear in size of grids set.
 
-def bidirectional_search_find_destabilizable_only(grids,depth):
+def find_destabilizable_only(grids,depth):
     grids_dict = dict()
     for grid in grids:
         grids_dict[grid]=find_equiv_grids(grid,depth)
