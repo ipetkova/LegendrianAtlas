@@ -1,7 +1,7 @@
 import pickle
 import os
 import GridGenerator
-import GridDiagramClean
+import GridDiagram
 import SearchAlgorithms
 
 def save_grids(grids, filename):
