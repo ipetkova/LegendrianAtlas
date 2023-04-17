@@ -1,7 +1,7 @@
 import pickle
 import os
 import GridGenerator
-import GridDiagramClean
+import GridDiagram
 import SearchAlgorithms
 
 def save_grids(grids, filename):
@@ -176,7 +176,7 @@ def rebucket_by_tb_r(location, curr_dir, dest_dir):
             count += 1
             grids = load_grids(f)
             for grid in grids:
-                G = GridDiagramClean.GridDiagram(grid[0],grid[1])
+                G = GridDiagram.GridDiagram(grid[0],grid[1])
                 key = (G.tb,G.r)
                 sorting_dict[key].add(grid)
         if count%100==0:
