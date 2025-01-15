@@ -425,7 +425,7 @@ class GridDiagram:
     
     def trace(self):
         xX=tuple([int(self.X[i]-0.5) for i in range(self.n)])
-        oO=tuple([int[self.O[i]-0.5) for i in range(self.n)])
+        oO=tuple([int(self.O[i]-0.5) for i in range(self.n)])
         
         dir = 'UP'
         loc = [0,1]
